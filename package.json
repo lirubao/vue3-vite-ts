@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "NODE_ENV=development vite",
-    "build": "NODE_ENV=development vite build"
+    "build": "NODE_ENV=development vite build",
+    "lint": "eslint \"src/**/*.{vue,js,ts}\""
   },
   "dependencies": {
     "vue": "^3.0.4"
