@@ -36,3 +36,5 @@ npm run lint
 | git checkout -b <name> | 创建并进入分支 |
 | git checkout <name> | 进入分支|
 | git merge --no-ff '描述' <name>| 合并其他分支到当前分支|
+| git branch -D <name> | 删除本地分支 |
+| git push origin --delete <name> | 删除远程分支 |
