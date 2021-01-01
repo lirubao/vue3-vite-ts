@@ -1,4 +1,4 @@
-import { SET_TODO } from '../store/actionType'
+import { SET_TODO, SET_TODO_LIST } from '../store/actionType'
 import { ITodo, TODO_STATUS } from '../typings'
 import { Store, useStore } from 'vuex'
 
@@ -10,10 +10,17 @@ export interface IUseTodo {
   setDoing: () => void
 }
 
-function useTodo(): IUseTodo {
-  const store: Store<any> = useStore()
+interface IUseLocalStorage {
+  getLocalList: () => ITodo[]
+  setLocalList: (todoList: ITodo[]) => void
+}
 
-  function setTodo(value: string): void {
+const useTodo = (): IUseTodo => {
+  const store: Store<any> = useStore()
+  const { getLocalList, setLocalList }: IUseLocalStorage = useLocalStorage()
+  const todoList: ITodo[] = getLocalList()
+
+  const setTodo = (value: string): void => {
     const todo: ITodo = {
       id: new Date().getTime(),
       content: value,
@@ -21,8 +28,13 @@ function useTodo(): IUseTodo {
     }
 
     store.dispatch(SET_TODO, todo)
+    setLocalList(store.state.list)
   }
-  const setTodoList = () => {}
+  const setTodoList = () => {
+    store.dispatch(SET_TODO_LIST, todoList)
+    console.log('store list', store.state.list)
+  }
+
   const removeTodo = () => {}
   const setStatus = () => {}
   const setDoing = () => {}
@@ -36,4 +48,19 @@ function useTodo(): IUseTodo {
   }
 }
 
-export { useTodo }
+const useLocalStorage = (): IUseLocalStorage => {
+  const getLocalList = (): ITodo[] => {
+    return JSON.parse(localStorage.getItem('todoList') || '[]')
+  }
+
+  const setLocalList = (todoList: ITodo[]): void => {
+    localStorage.setItem('todoList', JSON.stringify(todoList))
+  }
+
+  return {
+    getLocalList,
+    setLocalList,
+  }
+}
+
+export { useTodo, useLocalStorage }
