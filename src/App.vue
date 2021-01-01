@@ -1,10 +1,20 @@
 <template>
-  <h1>Vue Vite</h1>
+  <div class="wrapper">
+    <todo-input />
+    <todo-list />
+  </div>
 </template>
 
-<script>
-export default {
-  name: 'App',
-  components: {},
-}
+<script lang="ts">
+  import { defineComponent } from 'vue'
+  import TodoInput from './components/TodoInput/index.vue'
+  import TodoList from './components/TodoList/index.vue'
+
+  export default defineComponent({
+    name: 'App',
+    components: {
+      TodoInput,
+      TodoList,
+    },
+  })
 </script>
