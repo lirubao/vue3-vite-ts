@@ -26,8 +26,6 @@
       TodoItem,
     },
     setup(props) {
-      console.log('props', props.todoList)
-
       const { removeTodo, setStatus, setDoing }: IUseTodo = useTodo()
 
       return {

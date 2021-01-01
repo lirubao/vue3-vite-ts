@@ -30,14 +30,20 @@ const useTodo = (): IUseTodo => {
     store.dispatch(SET_TODO, todo)
     setLocalList(store.state.list)
   }
-  const setTodoList = () => {
+
+  const setTodoList = (): void => {
     store.dispatch(SET_TODO_LIST, todoList)
-    console.log('store list', store.state.list)
   }
 
-  const removeTodo = () => {}
-  const setStatus = () => {}
-  const setDoing = () => {}
+  const removeTodo = (): void => {
+    console.log('removeTodo')
+  }
+  const setStatus = (): void => {
+    console.log('setStatus')
+  }
+  const setDoing = (): void => {
+    console.log('setDoing')
+  }
 
   return {
     setTodo,
