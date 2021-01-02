@@ -59,8 +59,8 @@
     text-decoration: line-through;
   }
   .doing {
-    background-color: #cdcdcd;
-    color: #ccc;
+    background-color: #ededed;
+    color: #999;
   }
   .willdo {
     background-color: orange;

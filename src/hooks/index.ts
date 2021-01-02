@@ -1,4 +1,10 @@
-import { SET_TODO, SET_TODO_LIST, REMOVE_TODO, SET_TODO_STATUS } from '../store/actionType'
+import {
+  SET_TODO,
+  SET_TODO_LIST,
+  REMOVE_TODO,
+  SET_TODO_STATUS,
+  SET_DOING_STATUS,
+} from '../store/actionType'
 import { ITodo, TODO_STATUS } from '../typings'
 import { Store, useStore } from 'vuex'
 
@@ -44,7 +50,7 @@ const useTodo = (): IUseTodo => {
     setLocalList(store.state.list)
   }
   const setDoing = (id: number): void => {
-    console.log('setDoing')
+    store.dispatch(SET_DOING_STATUS, id)
   }
 
   return {
