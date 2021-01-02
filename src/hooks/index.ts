@@ -7,6 +7,7 @@ import {
 } from '../store/actionType'
 import { ITodo, TODO_STATUS } from '../typings'
 import { Store, useStore } from 'vuex'
+import { watch } from 'vue'
 
 export interface IUseTodo {
   setTodo: (value: string) => void
@@ -26,6 +27,14 @@ const useTodo = (): IUseTodo => {
   const { getLocalList, setLocalList }: IUseLocalStorage = useLocalStorage()
   const todoList: ITodo[] = getLocalList()
 
+  watch(
+    () => {
+      return store.state.list
+    },
+    (todoList) => {
+      setLocalList(todoList)
+    }
+  )
   const setTodo = (value: string): void => {
     const todo: ITodo = {
       id: new Date().getTime(),
@@ -34,7 +43,6 @@ const useTodo = (): IUseTodo => {
     }
 
     store.dispatch(SET_TODO, todo)
-    setLocalList(store.state.list)
   }
 
   const setTodoList = (): void => {
@@ -43,11 +51,9 @@ const useTodo = (): IUseTodo => {
 
   const removeTodo = (id: number): void => {
     store.dispatch(REMOVE_TODO, id)
-    setLocalList(store.state.list)
   }
   const setStatus = (id: number): void => {
     store.dispatch(SET_TODO_STATUS, id)
-    setLocalList(store.state.list)
   }
   const setDoing = (id: number): void => {
     store.dispatch(SET_DOING_STATUS, id)
