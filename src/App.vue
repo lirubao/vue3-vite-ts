@@ -1,10 +1,12 @@
 <template>
-  <h1>Vue Vite</h1>
+  <Tab />
 </template>
 
-<script>
-export default {
-  name: 'App',
-  components: {},
-}
+<script lang="ts">
+  import { defineComponent } from 'vue'
+  import Tab from './components/tab/Tab.vue'
+  export default defineComponent({
+    name: 'App',
+    components: { Tab },
+  })
 </script>
