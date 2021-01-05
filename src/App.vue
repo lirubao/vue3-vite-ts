@@ -1,10 +1,11 @@
 <template>
-  <h1>Vue Vite</h1>
+  <two_columns />
 </template>
 
 <script>
-export default {
-  name: 'App',
-  components: {},
-}
+  import two_columns from './components/two_columns.vue'
+  export default {
+    name: 'App',
+    components: { two_columns },
+  }
 </script>
