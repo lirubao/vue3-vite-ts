@@ -1,11 +1,16 @@
 <template>
-  <two_columns />
+  <!-- <TwoColumns /> -->
+  <clear-float />
 </template>
 
 <script>
-  import two_columns from './components/two_columns.vue'
+  import ClearFloat from './components/ClearFloat.vue'
+  // import TwoColumns from './components/two_columns.vue'
   export default {
     name: 'App',
-    components: { two_columns },
+    components: {
+      ClearFloat,
+      // TwoColumns
+    },
   }
 </script>
